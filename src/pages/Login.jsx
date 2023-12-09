@@ -19,7 +19,7 @@ export function Login() {
 
         const responseToken = resposta.headers.authorization;
         const token = responseToken.replace("Bearer ", "");
-        Cookies.set("token", token);
+        Cookies.set("token", token); 
     
         return navigate("/admin");
     }
