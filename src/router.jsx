@@ -4,6 +4,9 @@ import { Cardapio } from "./pages/Cardapio";
 import { Login } from "./pages/Login";
 import { Cadastro } from "./pages/Cadastro";
 import { Admin } from "./pages/Admin";
+import { AuthRoute } from "./components/AuthRoute";
+import { QueryRoute } from "./components/QueryRoute";
+import { Item } from "./pages/Item";
 
 export const router = createBrowserRouter([
     {
@@ -12,17 +15,17 @@ export const router = createBrowserRouter([
     },
     {
         path: "/cardapio",
-        element: <Cardapio />,
+        element: <QueryRoute element={<Cardapio />}/>,
         children: [
             {
-                path: "cardapio/:id",
-                element: <Cardapio />
+                path: ":id",
+                element: <Item />
             }
         ]
     },
     {
         path: "/admin",
-        element: <Admin />
+        element: <AuthRoute element={<Admin />} />
     },
     {
         path: "/login",
