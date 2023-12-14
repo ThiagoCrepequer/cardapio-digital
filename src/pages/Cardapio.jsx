@@ -15,7 +15,11 @@ export function Cardapio() {
 
     return (
         cardapio.map((item, key) => (
-            <a key={key} href={`/cardapio/` + item.uuid}>
+            <a 
+                className=''
+                key={key} 
+                href={`/cardapio/` + item.uuid}
+            >
                 <h1>{item.title}</h1>
                 <p>{item.description}</p>
                 <p>{item.price}</p>
