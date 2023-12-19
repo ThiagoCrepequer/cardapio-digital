@@ -3,7 +3,9 @@ import Cookies from "js-cookie";
 export function useCookies() {
     return {
         id: getId(),
-        setId: setId
+        setId: setId,
+        role: getRole(),
+        setRole: setRole,
     }
 }
 
@@ -25,4 +27,12 @@ function getId() {
 function setId(responseToken) {
     const token = responseToken.replace("Bearer ", "");
     Cookies.set("token", token);
+}
+
+function getRole() {
+    return Cookies.get("role");    
+}
+    
+function setRole(role) {
+    Cookies.set("role", role);
 }
