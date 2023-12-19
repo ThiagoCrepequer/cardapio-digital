@@ -1,4 +1,10 @@
 export function useQuery() {
+    return {
+        id: getId(),
+    }
+}
+
+function getId() {
     const query = window.location.search;
     const params = new URLSearchParams(query);
     
@@ -6,9 +12,9 @@ export function useQuery() {
     const localId = localStorage.getItem("id");
 
     if(!id && localId) {
-        return { id: localId };
+        return localId;
     }
 
     localStorage.setItem("id", id);
-    return { id };
+    return id;
 }
