@@ -1,11 +1,11 @@
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { useQuery } from "../hooks/useQuery";
+import { useCookies } from "../hooks/useCookies";
 
 
 export const QueryRoute = ({ element }) => {
     const navigate = useNavigate();
-    const query = useQuery();
+    const query = useCookies();
 
     useEffect(() => {
         const id = query.id;

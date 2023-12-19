@@ -1,11 +1,11 @@
 import { useEffect, useState } from 'react'
 import axios from '../services/axios'
-import { useQuery } from '../hooks/useQuery'
+import { useCookies } from '../hooks/useCookies'
 import { Link, Outlet } from 'react-router-dom';
 
 export function Cardapio() {
     const [cardapio, setCardapio] = useState([])
-    const query = useQuery();
+    const query = useCookies();
 
     useEffect(() => {
         const id = query.id;

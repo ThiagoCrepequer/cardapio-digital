@@ -1,16 +1,17 @@
-import Cookies from "js-cookie";
 import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
 import { Input } from "../components/Input";
 import { Button } from "../components/Button";
 import { FormAuth } from "../components/FormAuth";
+import { useCookies } from "../hooks/useCookies";
 
 export function Login() {
     const navigate = useNavigate();
+    const { setId } = useCookies();
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-
+        console.log(e.target[0].value, e.target[1].value)
         const resposta = await axios.post(import.meta.env.VITE_API_URL + "/auth/login", {
             email: e.target[0].value,
             password: e.target[1].value,
@@ -22,8 +23,7 @@ export function Login() {
         }
 
         const responseToken = resposta.headers.authorization;
-        const token = responseToken.replace("Bearer ", "");
-        Cookies.set("token", token);
+        setId(responseToken);
 
         return navigate("/admin");
     }
