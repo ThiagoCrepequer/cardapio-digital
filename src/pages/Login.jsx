@@ -30,8 +30,8 @@ export function Login() {
 
     return (
         <FormAuth
-            handleSubmit={handleSubmit}
             title="Login"
+            onSubmit={handleSubmit}
         >
             <Input
                 type="email"

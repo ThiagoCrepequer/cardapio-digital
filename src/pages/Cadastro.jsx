@@ -20,8 +20,8 @@ export function Cadastro() {
     
     return (
         <FormAuth
-            handleSubmit={handleSubmit}
             title="Cadastro"
+            onSubmit={handleSubmit}
         >
             <Input type="email" placeholder="Email" />
             <div className="flex gap-2">
