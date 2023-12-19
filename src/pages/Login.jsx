@@ -1,6 +1,6 @@
 import Cookies from "js-cookie";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { Input } from "../components/Input";
 import { Button } from "../components/Button";
 import { FormAuth } from "../components/FormAuth";
@@ -42,6 +42,9 @@ export function Login() {
                 placeholder="Password"
             />
             <Button type="submit">Login</Button>
+            <div className="w-full flex justify-end">
+                <Link to="/cadastro">Não tem cadastro? Criar conta</Link>
+            </div>
         </FormAuth>
     )
 }

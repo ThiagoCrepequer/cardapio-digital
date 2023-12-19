@@ -2,6 +2,7 @@ import axios from "axios";
 import { FormAuth } from "../components/FormAuth";
 import { Input } from "../components/Input";
 import { Button } from "../components/Button";
+import { Link } from "react-router-dom";
 
 export function Cadastro() {
     const handleSubmit = async (e) => {
@@ -29,6 +30,9 @@ export function Cadastro() {
                 <Input type="password" placeholder="Repita a senha"/>
             </div>
             <Button type="submit">Cadastrar</Button>
+            <div className="w-full flex justify-end">
+                <Link to="/login">Já tem cadastro? Entrar</Link>
+            </div>
         </FormAuth>
     )
 }
