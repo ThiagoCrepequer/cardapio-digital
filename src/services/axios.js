@@ -1,5 +1,5 @@
 import axios from 'axios';
-import Cookies from 'js-cookie';
+import { useCookies } from '../hooks/useCookies';
 
 const instance = axios.create({
     baseURL: import.meta.env.VITE_API_URL,
@@ -7,9 +7,9 @@ const instance = axios.create({
 });
 
 instance.interceptors.request.use((config) => {
-    const token = Cookies.get('token');
-    if (token) {
-        config.headers.Authorization = `Bearer ${token}`;
+    const { id } = useCookies();
+    if (id) {
+        config.headers.Authorization = `Bearer ${id}`;
     }
     return config;
 })

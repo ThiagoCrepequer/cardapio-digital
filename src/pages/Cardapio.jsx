@@ -1,10 +1,11 @@
 import { useEffect, useState } from 'react'
 import axios from '../services/axios'
-import { useQuery } from '../hooks/useQuery'
+import { useCookies } from '../hooks/useCookies'
+import { Link, Outlet } from 'react-router-dom';
 
 export function Cardapio() {
     const [cardapio, setCardapio] = useState([])
-    const query = useQuery();
+    const query = useCookies();
 
     useEffect(() => {
         const id = query.id;
@@ -14,16 +15,25 @@ export function Cardapio() {
     }, [query.id])
 
     return (
-        cardapio.map((item, key) => (
-            <a 
-                className=''
-                key={key} 
-                href={`/cardapio/` + item.uuid}
-            >
-                <h1>{item.title}</h1>
-                <p>{item.description}</p>
-                <p>{item.price}</p>
-            </a>
-        ))
+        <section className='flex justify-center gap-8 flex-wrap'>
+            {cardapio.map((item, key) => (
+                <Link
+                    className='relative min-w-[300px] max-w-[400px] flex justify-between p-4 border border-gray-200 rounded hover:bg-zinc-900'
+                    key={key}
+                    to={`/cardapio/` + item.uuid}
+                >
+                    <div className='flex flex-col justify-between'>
+                        <div>
+                            <h1 className='text-2xl font-bold'>{item.title}</h1>
+                            <p>{item.description}</p>
+                        </div>
+                        <p className='text-gray-400'>{item.price}</p>
+                    </div>
+                    <img src={item.image}  className='max-w-[100px] max-h-[100px]'/>
+                </Link>
+            ))}
+
+            <Outlet />
+        </section>
     )
 }
